@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="Snippet" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.0.0</version>
+    </saved-by-versions>
+    <referenced-types>
+      <type name="SmartRPA_MC_CallRepository"/>
+    </referenced-types>
+    <referenced-snippets/>
+    <triggers/>
+    <typed-variables>
+      <typed-variable name="SmartRPA_MC_CallRepository" type-name="SmartRPA_MC_CallRepository"/>
+    </typed-variables>
+    <global-variables/>
+    <parameters/>
+    <return-variables/>
+    <store-in-database-variables/>
+    <device-mappings/>
+    <browser-engine>WEBKIT</browser-engine>
+  </prologue>
+  <property name="variables" class="Variables">
+    <object class="Variable" serializationversion="1">
+      <property name="name" class="String">SmartRPA_MC_CallRepository</property>
+      <property name="initialAssignment" class="InitialVariableAssignment">
+        <property name="type" class="TypeReference" serializationversion="0">
+          <property name="typeName" class="String">SmartRPA_MC_CallRepository</property>
+        </property>
+      </property>
+    </object>
+  </property>
+  <comment class="String"/>
+  <body class="Body">
+    <blockBeginStep class="BlockBeginStep" id="0"/>
+    <steps class="ArrayList">
+      <object class="Transition" serializationversion="3" id="1">
+        <property name="name" class="String">Call Repository</property>
+        <property name="stepAction" class="CallRESTWebService2" serializationversion="1">
+          <property name="urlProvider" class="kapow.robot.plugin.common.support.expression.multipletype.StringProcessorsExpression" serializationversion="0">
+            <property name="dataConverters" class="DataConverters">
+              <element class="EvaluateExpression" serializationversion="0">
+                <property name="expression" class="String">SmartRPA_MC_CallRepository.url + "secure/RepositoryAPI?format=xml"
+</property>
+              </element>
+            </property>
+          </property>
+          <property name="request" class="kapow.robot.plugin.common.stateprocessor.rest.PostRestRequest">
+            <property name="body" class="kapow.robot.plugin.common.stateprocessor.rest.RawBodyContent">
+              <property name="data" class="Expression" serializationversion="1">
+                <property name="text" class="String">&gt;&gt;&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;!DOCTYPE repository-request PUBLIC "-//Kapow Technologies//DTD Repository 1.5//EN" "http://www.kapowtech.com/robosuite/repository_1_5.dtd"&gt;
+&lt;&lt; +
+SmartRPA_MC_CallRepository.requestXML</property>
+              </property>
+            </property>
+          </property>
+          <property name="output" class="kapow.robot.plugin.common.stateprocessor.rest.ToVariableOutputSpecification" serializationversion="1">
+            <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+              <property name="name" class="String">SmartRPA_MC_CallRepository.xmlText</property>
+            </property>
+          </property>
+          <property name="browserConfigurationSpecification" class="BrowserConfigurationSpecificationWebKit" serializationversion="25">
+            <property name="ancestorProvider" class="BrowserConfigurationSpecificationAncestorProviderForStep"/>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" class="Boolean" id="2">true</property>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="3">
+        <property name="name" class="String">Clean XML</property>
+        <property name="stepAction" class="AssignVariable" serializationversion="4">
+          <property name="stringExpr" class="kapow.robot.plugin.common.support.expression.multipletype.StringProcessorsExpression" serializationversion="0">
+            <property name="dataConverters" class="DataConverters">
+              <element class="GetVariable" serializationversion="2">
+                <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+                  <property name="name" class="String">SmartRPA_MC_CallRepository.xmlText</property>
+                </property>
+              </element>
+              <element class="ReplacePattern">
+                <property name="pattern" class="kapow.robot.plugin.common.support.expression.stringexpr.PartialInputMatchingPatternValueStringExpression">
+                  <property name="value" class="String">(&lt;!DOCTYPE.*?dtd"&gt;)</property>
+                </property>
+                <property name="replaceExp" class="String">""</property>
+              </element>
+            </property>
+          </property>
+          <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+            <property name="name" class="String">SmartRPA_MC_CallRepository.responseXML</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="2"/>
+        <property name="changedProperties" class="java.util.HashSet">
+          <element class="String">name</element>
+        </property>
+      </object>
+      <object class="Transition" serializationversion="3" id="4">
+        <property name="name" class="String">Open Response XML</property>
+        <property name="stepAction" class="OpenVariable">
+          <property name="variable" class="kapow.robot.plugin.common.support.AttributeName2">
+            <property name="name" class="String">SmartRPA_MC_CallRepository.responseXML</property>
+          </property>
+        </property>
+        <property name="elementFinders" class="ElementFinders"/>
+        <property name="errorHandler" class="ErrorHandler" serializationversion="0"/>
+        <property name="comment">
+          <null/>
+        </property>
+        <property name="enabled" idref="2"/>
+        <property name="changedProperties" class="java.util.HashSet"/>
+      </object>
+    </steps>
+    <blockEndStep class="BlockEndStep" id="5"/>
+    <edges class="ArrayList">
+      <object class="TransitionEdge">
+        <from idref="0"/>
+        <to idref="1"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="1"/>
+        <to idref="3"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="3"/>
+        <to idref="4"/>
+      </object>
+      <object class="TransitionEdge">
+        <from idref="4"/>
+        <to idref="5"/>
+      </object>
+    </edges>
+  </body>
+</object>

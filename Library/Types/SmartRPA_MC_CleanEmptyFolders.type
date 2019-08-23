@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<object class="kapow.robot.common.domain.Type" serializationversion="0">
+  <prologue>
+    <saved-by-versions>
+      <version>10.3.0.0</version>
+    </saved-by-versions>
+  </prologue>
+  <property name="attributes" class="kapow.robot.common.domain.Attributes">
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">urlMc</property>
+      <property name="showSeparatorBefore" class="Boolean">true</property>
+      <property name="separatorTitle" class="String">Specify the URL to the target ManagementConsole:</property>
+      <property name="type" class="kapow.robot.plugin.common.domain.StringAttributeType"/>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">username</property>
+      <property name="showSeparatorBefore" class="Boolean">true</property>
+      <property name="separatorTitle" class="String">Specify credentials of user with delete permission (If needed):</property>
+      <property name="type" class="kapow.robot.plugin.common.domain.StringAttributeType"/>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">password</property>
+      <property name="type" class="kapow.robot.plugin.common.domain.PasswordAttributeType"/>
+    </object>
+    <object class="kapow.robot.common.domain.Attribute" serializationversion="0">
+      <property name="name" class="String">cleanProjectsWithNameContaining</property>
+      <property name="showSeparatorBefore" class="Boolean">true</property>
+      <property name="separatorTitle" class="String">Clean projects containing in name (Leave blank for all):</property>
+      <property name="type" class="kapow.robot.plugin.common.domain.StringAttributeType"/>
+    </object>
+  </property>
+</object>
